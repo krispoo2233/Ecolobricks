@@ -2,8 +2,10 @@
 import { GoogleGenAI } from "@google/genai";
 import { Message } from "../types";
 
-// Always use process.env.API_KEY directly and use named parameter for initialization
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY;
+
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
+
 
 const SYSTEM_INSTRUCTION = `
 You are the AI Ambassador for EcoloBrick, a pioneering eco-construction company based in Annaba, Algeria.
@@ -40,7 +42,12 @@ const KEYWORD_RESPONSES: Record<string, string> = {
 };
 
 export const getChatbotResponse = async (history: Message[], currentMessage: string): Promise<string> => {
+  if (!ai) {
+    return "The AI assistant is currently unavailable.";
+  }
+
   const normalizedInput = currentMessage.toLowerCase();
+
 
   // Check for pre-defined keyword responses first
   for (const [keyword, response] of Object.entries(KEYWORD_RESPONSES)) {
