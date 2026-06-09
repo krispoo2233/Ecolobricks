@@ -34,7 +34,7 @@ export const Market: React.FC = () => {
             <h2 className="font-display text-4xl md:text-5xl font-semibold text-ivory mt-3 max-w-md">
               From Annaba across Algeria
             </h2>
-            <div className="relative aspect-[2/1] mt-10 border border-bronze/30 bg-charcoal/50">
+            <div className="relative aspect-[2/1] mt-10 border border-bronze/30 bg-charcoal/50 rounded-2xl" style={{ boxShadow: 'var(--shadow-subtle)' }}>
               {EXPANSION_CITIES.map((city) => (
                 <div
                   key={city.name}

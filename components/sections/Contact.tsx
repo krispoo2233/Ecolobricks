@@ -30,7 +30,8 @@ export const Contact: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="glass-panel-dark border border-bronze/20 rounded-sm p-8 md:p-10 space-y-5"
+            className="glass-panel-dark border border-bronze/20 rounded-3xl p-8 md:p-10 space-y-5"
+            style={{ boxShadow: 'var(--shadow-soft)' }}
           >
             {(['name', 'email', 'company'] as const).map((field) => (
               <div key={field}>
@@ -40,7 +41,7 @@ export const Contact: React.FC = () => {
                   required={field !== 'company'}
                   value={form[field]}
                   onChange={(e) => setForm({ ...form, [field]: e.target.value })}
-                  className="w-full bg-charcoal/50 border border-bronze/25 px-4 py-3 text-ivory font-body focus:outline-none focus:border-amber/50 transition-colors"
+                  className="w-full bg-charcoal/50 border border-bronze/25 px-4 py-3 text-ivory font-body rounded-lg focus:outline-none focus:border-amber/50 transition-colors"
                 />
               </div>
             ))}
@@ -51,7 +52,7 @@ export const Contact: React.FC = () => {
                 rows={4}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full bg-charcoal/50 border border-bronze/25 px-4 py-3 text-ivory font-body resize-none focus:outline-none focus:border-amber/50"
+                className="w-full bg-charcoal/50 border border-bronze/25 px-4 py-3 text-ivory font-body resize-none rounded-lg focus:outline-none focus:border-amber/50"
               />
             </div>
             <Button type="submit" variant="primary" className="w-full">
@@ -60,7 +61,7 @@ export const Contact: React.FC = () => {
           </motion.form>
 
           <div className="space-y-6">
-            <div className="border border-bronze/20 p-8 rounded-sm">
+            <div className="border border-bronze/20 p-8 rounded-2xl" style={{ boxShadow: 'var(--shadow-subtle)' }}>
               <p className="font-label text-amber/70">Electronic mail</p>
               <a href={`mailto:${CONTACT.email}`} className="block mt-2 font-display text-xl text-ivory hover:text-amber transition-colors">
                 {CONTACT.email}
@@ -71,12 +72,12 @@ export const Contact: React.FC = () => {
                 href={CONTACT.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-6 font-label text-amber border border-amber/30 px-4 py-2 hover:bg-amber/10 transition-colors"
+                className="inline-block mt-6 font-label text-amber border border-amber/30 px-4 py-2 hover:bg-amber/10 transition-colors rounded-xl"
               >
                 WhatsApp
               </a>
             </div>
-            <div className="h-64 border border-bronze/20 rounded-sm overflow-hidden grayscale opacity-90 hover:grayscale-0 transition-all duration-700">
+            <div className="h-64 border border-bronze/20 rounded-3xl overflow-hidden grayscale opacity-90 hover:grayscale-0 transition-all duration-700" style={{ boxShadow: 'var(--shadow-soft)' }}>
               <iframe
                 title="Location"
                 src={CONTACT.mapEmbed}

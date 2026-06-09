@@ -30,7 +30,8 @@ export const Technology: React.FC = () => {
               initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-ivory/90 border border-bronze/25 p-6 rounded-sm"
+              className="bg-ivory/90 border border-bronze/20 p-6 rounded-2xl"
+              style={{ boxShadow: 'var(--shadow-subtle)' }}
             >
               <h3 className="font-display text-lg font-semibold text-charcoal">{feat.title}</h3>
               <p className="mt-2 text-sm text-brown/70">{feat.description}</p>
@@ -56,8 +57,8 @@ export const Technology: React.FC = () => {
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ delay: i * 0.07, duration: 0.75 }}
                 whileHover={{ zIndex: 30, scale: 1.03, transition: { duration: 0.35 } }}
-                className={`absolute ${positions[i]} bg-ivory/90 border border-bronze/25 p-6 shadow-lift rounded-sm`}
-                style={{ zIndex: 10 + i }}
+                className={`absolute ${positions[i]} bg-ivory/90 border border-bronze/20 p-6 rounded-2xl`}
+                style={{ zIndex: 10 + i, boxShadow: 'var(--shadow-soft)' }}
               >
                 <span className="font-mono text-[10px] text-bronze/50">{feat.icon}</span>
                 <h3 className="font-display text-lg font-semibold text-charcoal mt-3">{feat.title}</h3>
@@ -71,7 +72,8 @@ export const Technology: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-32 md:mt-48 max-w-4xl mx-auto border border-charcoal/20 bg-charcoal text-ivory p-10 md:p-14 relative overflow-hidden"
+          className="mt-32 md:mt-48 max-w-4xl mx-auto border border-charcoal/20 bg-charcoal text-ivory p-10 md:p-14 relative overflow-hidden rounded-3xl"
+          style={{ boxShadow: 'var(--shadow-soft)' }}
         >
           <div className="absolute inset-0 blueprint-grid opacity-20" />
           <div className="relative z-10 grid md:grid-cols-2 gap-10 items-center">

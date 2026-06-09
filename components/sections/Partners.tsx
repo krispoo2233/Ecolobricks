@@ -31,7 +31,7 @@ export const Partners: React.FC = () => {
                     className="h-12 w-auto object-contain opacity-40 grayscale group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-700"
                   />
                 ) : (
-                  <div className="h-12 px-4 flex items-center border border-bronze/30 font-display text-charcoal">
+                  <div className="h-12 px-4 flex items-center border border-bronze/30 font-display text-charcoal rounded-lg">
                     NESDA
                   </div>
                 )}

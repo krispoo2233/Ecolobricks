@@ -44,7 +44,10 @@ const Chatbot: React.FC = () => {
     setInput('');
     setIsLoading(true);
     
-    const response = await getChatbotResponse(messages, query);
+    const updatedMessages = [...messages, userMsg];
+    setMessages(updatedMessages);
+
+    const response = await getChatbotResponse(updatedMessages);
     setMessages(prev => [...prev, { role: 'model', text: response }]);
     setIsLoading(false);
   };
@@ -58,7 +61,8 @@ const Chatbot: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
             exit={{ opacity: 0, y: 40, scale: 0.8, filter: 'blur(10px)' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="mb-6 w-80 md:w-96 bg-charcoal/95 backdrop-blur-2xl border border-bronze/25 rounded-sm overflow-hidden shadow-warm flex flex-col h-[600px] origin-bottom-right"
+            className="mb-6 w-80 md:w-96 bg-charcoal/95 backdrop-blur-2xl border border-bronze/25 rounded-3xl overflow-hidden flex flex-col h-[600px] origin-bottom-right"
+            style={{ boxShadow: 'var(--shadow-warm)' }}
           >
             <div className="p-6 bg-brown/30 border-b border-bronze/20 flex justify-between items-center">
               <div className="flex items-center gap-4">
@@ -87,10 +91,10 @@ const Chatbot: React.FC = () => {
                   key={i} 
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`max-w-[85%] p-4 text-sm leading-relaxed font-body ${
+                  <div className={`max-w-[85%] p-4 text-sm leading-relaxed font-body rounded-2xl ${
                     msg.role === 'user' 
-                      ? 'bg-amber/90 text-charcoal rounded-sm' 
-                      : 'bg-charcoal/80 text-parchment rounded-sm border border-bronze/20'
+                      ? 'bg-amber/90 text-charcoal' 
+                      : 'bg-charcoal/80 text-parchment border border-bronze/20'
                   }`}>
                     {msg.text}
                   </div>

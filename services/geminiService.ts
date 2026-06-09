@@ -2,7 +2,7 @@
 import { GoogleGenAI } from "@google/genai";
 import { Message } from "../types";
 
-const apiKey = process.env.API_KEY;
+const apiKey = (import.meta as any).env?.VITE_API_KEY as string | undefined;
 
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
@@ -41,12 +41,14 @@ const KEYWORD_RESPONSES: Record<string, string> = {
   'innovators': "Our project is led by a brilliant team: Dr. Amri Naziha, Pr. Habachi Wafa, Dr. Benzerara Mohammed, Et. Mansouri Abderrahman, Et. Boumzaoute Zineddine, and Et. Lekouaght Abdelhamid. Each brings unique expertise from materials science to sustainable architecture."
 };
 
-export const getChatbotResponse = async (history: Message[], currentMessage: string): Promise<string> => {
+export const getChatbotResponse = async (history: Message[]): Promise<string> => {
   if (!ai) {
     return "The AI assistant is currently unavailable.";
   }
 
-  const normalizedInput = currentMessage.toLowerCase();
+  const normalizedInput = history.length
+    ? history[history.length - 1].text.toLowerCase()
+    : '';
 
 
   // Check for pre-defined keyword responses first
@@ -59,13 +61,12 @@ export const getChatbotResponse = async (history: Message[], currentMessage: str
   try {
     // Properly structure the contents array for the Gemini API
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-1.5-flash',
       contents: [
         ...history.map(msg => ({
-          role: msg.role,
+          role: msg.role === 'user' ? 'user' : 'model',
           parts: [{ text: msg.text }]
-        })),
-        { role: 'user', parts: [{ text: currentMessage }] }
+        }))
       ],
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,

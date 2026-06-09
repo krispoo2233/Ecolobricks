@@ -62,7 +62,7 @@ export const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ y: -2 }}
-                  className="font-label text-beige/50 border border-bronze/25 px-4 py-2 hover:border-amber/40 hover:text-amber transition-all duration-300"
+                  className="font-label text-beige/50 border border-bronze/25 px-4 py-2 rounded-lg hover:border-amber/40 hover:text-amber transition-all duration-300"
                 >
                   {s.name}
                 </motion.a>

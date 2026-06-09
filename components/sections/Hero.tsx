@@ -121,7 +121,7 @@ export const Hero: React.FC = () => {
             >
               <EcoBricksScene className="h-full w-full" mouseX={smoothX} mouseY={smoothY} />
             </Suspense>
-            <div className="absolute inset-0 rounded-sm ring-1 ring-bronze/25 shadow-[inset_0_0_100px_rgba(201,163,90,0.06)] pointer-events-none" />
+            <div className="absolute inset-0 rounded-3xl ring-1 ring-bronze/25 shadow-[inset_0_0_100px_rgba(201,163,90,0.06)] pointer-events-none" />
           </div>
         </motion.div>
       </motion.div>

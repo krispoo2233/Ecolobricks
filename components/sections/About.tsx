@@ -25,7 +25,7 @@ export const About: React.FC = () => {
           {/* Asymmetric image column — bleeds outside grid */}
           <div className="lg:col-span-6 relative lg:-ml-12">
             <motion.div style={{ y: imageY }} className="relative">
-              <div className="aspect-[3/4] md:aspect-[4/5] max-h-[720px] overflow-hidden rounded-sm border border-bronze/25 shadow-lift">
+              <div className="aspect-[3/4] md:aspect-[4/5] max-h-[720px] overflow-hidden rounded-3xl border border-bronze/20" style={{ boxShadow: 'var(--shadow-soft)' }}>
                 <img
                   src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop"
                   alt="Sustainable architecture"
@@ -67,9 +67,10 @@ export const About: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.08, duration: 0.7 }}
-                    className={`border border-bronze/20 bg-ivory/70 p-6 md:p-8 rounded-sm ${
+                    className={`border border-bronze/15 bg-ivory/70 p-6 md:p-8 rounded-3xl ${
                       i === 0 ? 'col-span-2 md:col-span-1' : ''
                     } ${i % 3 === 0 ? 'md:translate-y-6' : ''}`}
+                    style={{ boxShadow: 'var(--shadow-subtle)' }}
                   >
                     <p className="font-display text-2xl md:text-3xl font-semibold text-charcoal">
                       {stat.prefix}

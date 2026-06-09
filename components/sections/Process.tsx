@@ -80,7 +80,7 @@ function ProcessDesktop() {
                   animate={{ scale: active === i ? 1 : 0.9, opacity: active === i ? 1 : 0.3 }}
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="absolute inset-0 rounded-sm overflow-hidden border border-bronze/20">
+                  <div className="absolute inset-0 rounded-3xl overflow-hidden border border-bronze/15" style={{ boxShadow: 'var(--shadow-soft)' }}>
                     <motion.img
                       src={step.image}
                       alt=""
@@ -90,9 +90,6 @@ function ProcessDesktop() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
                   </div>
-                  <div
-                    className={`absolute -z-10 inset-0 border border-amber/15 rounded-sm translate-x-3 translate-y-3`}
-                  />
                 </motion.div>
 
                 <motion.div
@@ -106,7 +103,8 @@ function ProcessDesktop() {
                         animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
                         exit={{ opacity: 0, filter: 'blur(6px)' }}
                         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                        className="glass-panel-dark border border-amber/25 p-10 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.75)]"
+                        className="glass-panel-dark border border-amber/25 rounded-3xl p-10"
+                        style={{ boxShadow: 'var(--shadow-soft)' }}
                       >
                         <div className="flex items-center gap-4 mb-6">
                           <span className="font-display text-5xl text-amber/40">
@@ -189,10 +187,10 @@ function ProcessMobile() {
       >
         {PROCESS_STEPS.map((step) => (
           <div key={step.id} className="snap-center flex-shrink-0 w-[88vw] first:pl-6 last:pr-6">
-            <div className="aspect-[4/3] rounded-sm overflow-hidden border border-bronze/20 mb-4">
+            <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-bronze/15 mb-4" style={{ boxShadow: 'var(--shadow-soft)' }}>
               <img src={step.image} alt="" className="w-full h-full object-cover" />
             </div>
-            <div className="glass-panel-dark p-6 border border-amber/20 mr-4">
+            <div className="glass-panel-dark p-6 border border-amber/20 rounded-3xl mr-4" style={{ boxShadow: 'var(--shadow-soft)' }}>
               <span className="font-label text-amber/70">{step.phase}</span>
               <h3 className="font-display text-xl font-semibold text-ivory mt-2">{step.title}</h3>
               <p className="mt-3 text-sm text-beige/60">{step.description}</p>

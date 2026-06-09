@@ -59,7 +59,7 @@ export const Products: React.FC = () => {
               i % 2 === 1 ? 'md:translate-y-16' : ''
             }`}
           >
-            <div className="glass-panel-dark border border-bronze/20 overflow-hidden rounded-sm group">
+            <div className="glass-panel-dark border border-bronze/20 overflow-hidden rounded-3xl group" style={{ boxShadow: 'var(--shadow-soft)' }}>
               <div className="relative aspect-[3/4] overflow-hidden">
                 <img
                   src={product.image}
@@ -75,7 +75,7 @@ export const Products: React.FC = () => {
               <div className="p-6 border-t border-bronze/15">
                 <div className="grid grid-cols-2 gap-2">
                   {product.specs.slice(0, 4).map((s) => (
-                    <div key={s.label} className="text-xs border border-bronze/15 p-2">
+                    <div key={s.label} className="text-xs border border-bronze/15 p-2 rounded-xl">
                       <span className="font-label text-beige/40 block">{s.label}</span>
                       <span className="text-ivory font-body">{s.value}</span>
                     </div>

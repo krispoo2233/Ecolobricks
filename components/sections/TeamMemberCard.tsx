@@ -23,9 +23,10 @@ export const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
     <motion.div
       whileHover={{ y: -6 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className={`relative overflow-hidden rounded-sm border bg-charcoal/80 ${
+      className={`relative overflow-hidden rounded-3xl border bg-charcoal/80 ${
         featured ? 'border-amber/35' : 'border-bronze/20'
       }`}
+      style={{ boxShadow: featured ? 'var(--shadow-warm)' : 'var(--shadow-soft)' }}
     >
       {featured && (
         <span className="absolute top-4 right-4 z-20 font-label text-amber/90 border border-amber/30 px-3 py-1 bg-charcoal/80">

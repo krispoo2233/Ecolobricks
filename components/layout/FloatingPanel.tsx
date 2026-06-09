@@ -28,7 +28,8 @@ export const FloatingPanel: React.FC<FloatingPanelProps> = ({
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -6, transition: { duration: 0.4 } }}
-      className={`glass-panel-dark border border-bronze/25 shadow-warm ${offsetClass} ${className}`}
+      className={`glass-panel-dark border border-bronze/25 rounded-3xl ${offsetClass} ${className}`}
+      style={{ boxShadow: 'var(--shadow-warm)' }}
     >
       {children}
     </motion.div>

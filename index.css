@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 @theme {
   /* Victorian eco-industrial palette */
@@ -19,11 +20,13 @@
   /* Legacy aliases → muted tones (no neon) */
   --color-eco: #3d5c4a;
   --color-eco-light: #c9a35a;
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "Lora", Georgia, serif;
-  --font-label: "Lora", Georgia, serif;
+  --font-display: "Montserrat", "Poppins", sans-serif;
+  --font-body: "Inter", "Poppins", sans-serif;
+  --font-label: "Montserrat", "Inter", sans-serif;
   --shadow-warm: 0 24px 80px -20px rgba(0, 0, 0, 0.65);
   --shadow-lift: 0 20px 50px -15px rgba(26, 24, 22, 0.5);
+  --shadow-soft: 0 12px 40px -8px rgba(0, 0, 0, 0.35);
+  --shadow-subtle: 0 8px 24px -4px rgba(0, 0, 0, 0.25);
 }
 
 @layer base {
@@ -42,6 +45,9 @@
     font-family: var(--font-body);
     overflow-x: hidden;
   }
+  section {
+    scroll-margin-top: 110px;
+  }
   ::selection {
     @apply bg-amber/30 text-ivory;
   }
@@ -59,14 +65,31 @@
 @layer components {
   .font-display {
     font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
   .font-body {
     font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: 0.01em;
   }
   .font-label {
     font-family: var(--font-label);
-    font-variant: small-caps;
-    letter-spacing: 0.2em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  /* Soft rounded utilities */
+  .rounded-soft {
+    @apply rounded-2xl;
+  }
+  .rounded-softer {
+    @apply rounded-3xl;
+  }
+  .rounded-softest {
+    @apply rounded-full;
   }
 
   .texture-grain {
@@ -88,7 +111,8 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(201, 163, 90, 0.12);
-    box-shadow: var(--shadow-warm);
+    border-radius: 2rem;
+    box-shadow: var(--shadow-soft);
   }
 
   .glass-panel-dark {
@@ -99,7 +123,8 @@
     );
     backdrop-filter: blur(20px);
     border: 1px solid rgba(139, 115, 85, 0.2);
-    box-shadow: var(--shadow-warm);
+    border-radius: 2.5rem;
+    box-shadow: var(--shadow-soft);
   }
 
   .panel-parchment {
@@ -167,19 +192,63 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium tracking-wide;
+    @apply inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium tracking-wide rounded-2xl;
     @apply bg-amber/90 text-charcoal border border-amber/40;
     @apply hover:bg-amber transition-all duration-500;
-    box-shadow: 0 4px 24px -4px rgba(201, 163, 90, 0.35);
+    box-shadow: var(--shadow-subtle);
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium tracking-wide;
+    @apply inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium tracking-wide rounded-2xl;
     @apply border border-bronze/40 text-parchment bg-transparent;
     @apply hover:bg-bronze/10 hover:border-amber/50 transition-all duration-500;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center px-6 py-3 text-sm text-beige/80;
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm text-beige/80 rounded-xl;
     @apply hover:text-ivory transition-colors duration-300;
+  }
+
+  .scroll-dock {
+    display: none;
+    position: fixed;
+    top: 50%;
+    right: 1.5rem;
+    z-index: 250;
+    transform: translateY(-50%);
+  }
+
+  @media (min-width: 1024px) {
+    .scroll-dock {
+      display: flex;
+    }
+  }
+
+  .scroll-dock-inner {
+    @apply rounded-3xl border border-bronze/20 bg-charcoal/90 backdrop-blur-xl p-3 shadow-soft;
+  }
+
+  .dock-button {
+    @apply w-full cursor-pointer;
+  }
+
+  .dock-button-active {
+    @apply ring-1 ring-amber/50 bg-amber/10;
+  }
+
+  .dock-tooltip {
+    display: none;
+    position: absolute;
+    right: calc(100% + 0.75rem);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14rem;
+    @apply rounded-3xl border border-bronze/20 bg-charcoal/90 p-3 shadow-soft opacity-0 transition-all duration-300;
+  }
+
+  .dock-button:hover .dock-tooltip,
+  .dock-button:focus-visible .dock-tooltip,
+  .dock-button.group:hover .dock-tooltip {
+    display: flex;
+    @apply visible opacity-100;
   }
 
   .ornament-line {

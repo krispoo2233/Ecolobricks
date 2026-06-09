@@ -10,8 +10,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<Variant, string> = {
-  primary: 'btn-primary rounded-sm',
-  secondary: 'btn-secondary rounded-sm',
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
   ghost: 'btn-ghost',
 };
 
