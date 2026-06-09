@@ -3,6 +3,7 @@ import Hero from '../components/sections/Hero';
 import About from '../components/sections/About';
 import Process from '../components/sections/Process';
 import Products from '../components/sections/Products';
+import TechnicalSpecifications from '../components/sections/TechnicalSpecifications';
 import Impact from '../components/sections/Impact';
 import Technology from '../components/sections/Technology';
 import Market from '../components/sections/Market';
@@ -26,6 +27,9 @@ export const Home: React.FC = () => (
     <Process />
 
     <Products />
+
+    <SectionBridge variant="dark-to-warm" />
+    <TechnicalSpecifications />
 
     <SectionBridge variant="dark-to-warm" />
     <Impact />
